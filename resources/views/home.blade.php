@@ -18,32 +18,38 @@
 <body>
 
     <main>
-        
-        @foreach ($train as $trains)
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ $trains->company }}</h5>
-            <p class="card-text">Stazione di partenza: {{ $trains->departure_station }}</p>
-            <p class="card-text">Stazione di arrivo: {{ $trains->arrival_station }}</p>
-            <p class="card-text">Orario di partenza: {{ $trains->departure_time }}</p>
-            <p class="card-text">Orario di arrivo: {{ $trains->arrival_time }}</p>
-            <p class="card-text">Codice treno: {{ $trains->train_code }}</p>
-            <p class="card-text">Numero di carrozze: {{ $trains->carriages_number }}</p>
-            <p class="card-text">Stato del treno:
-                @if ($trains->cancelled === 1)
-                 Cancellato                   
-                @else
-                    @if ($trains->on_time === 0)  
-                       In Orario
-                    @elseif ($trains->on_time === 1)  
-                         In Ritardo
-                    @endif
-              @endif
-            </p>
-          </div>
+        <div class="row justify-content-center">
+            @foreach ($train as $trains)
+            <div class="col-sm-6 col-md-4 col-lg-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-info">{{ $trains->company }}</h1>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Stazione di partenza:</span> {{ $trains->departure_station }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Stazione di arrivo:</span> {{ $trains->arrival_station }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Orario di partenza:</span> {{ $trains->departure_time }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Orario di arrivo:</span> {{ $trains->arrival_time }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Codice treno:</span> {{ $trains->train_code }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Numero di carrozze:</span> {{ $trains->carriages_number }}</p>
+                        <p class="card-text fw-bold text-white"><span class="text-primary">Stato del treno:</span>
+                            @if ($trains->cancelled === 1)
+                            <span class="text-danger">Cancellato</span>                   
+                            @else
+                                @if ($trains->on_time === 0)  
+                                <span class="text-success">In Orario</span>    
+                                @elseif ($trains->on_time === 1)  
+                                <span class="text-warning">In Ritardo</span>    
+                                @endif
+                            @endif
+                        </p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
-      @endforeach
         
+
+
+ 
       
     </main>
 
