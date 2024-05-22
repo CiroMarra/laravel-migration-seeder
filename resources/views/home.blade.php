@@ -29,13 +29,15 @@
             <p class="card-text">Orario di arrivo: {{ $trains->arrival_time }}</p>
             <p class="card-text">Codice treno: {{ $trains->train_code }}</p>
             <p class="card-text">Numero di carrozze: {{ $trains->carriages_number }}</p>
-            <p class="card-text">
-              @if ($trains->cancelled === 1)
-                Treno Cancellato
-              @elseif ($trains->on_time === 0)  
-              Stato del treno: In Orario
-              @elseif ($trains->on_time === 1)  
-              Stato del treno: In Ritardo
+            <p class="card-text">Stato del treno:
+                @if ($trains->cancelled === 1)
+                 Cancellato                   
+                @else
+                    @if ($trains->on_time === 0)  
+                       In Orario
+                    @elseif ($trains->on_time === 1)  
+                         In Ritardo
+                    @endif
               @endif
             </p>
           </div>
